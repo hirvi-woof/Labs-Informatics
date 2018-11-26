@@ -1,0 +1,26 @@
+#!/bin/bash
+cd
+echo "Let's check where sre commands 'cat', 'less', 'grep' and 'find' with help of command 'whereis'"
+whereis cat less grep find
+echo "We can also use command 'which' for the same aims (but it will give us less details)"
+which cat less grep find
+echo "Let's try to see where PATH will bring us. We can make sure that it is the same directory that in our previous actions:"
+echo $PATH
+echo "Let's try to execute some programm:"
+echo 'int main() {
+printf("Hello world!\n");
+return 0;
+}' > script.c
+gcc -include stdio.h script.c -o script.exe
+./script.exe
+echo "We won't be able to execute it from the other directory:"
+mkdir temp
+cd temp
+./script.exe
+echo "So we can add to PATH"
+export PATH=$PATH:/home/hirvi/
+echo $PATH
+echo "Let's try to execute it from the other directory again:"
+script.exe
+cd ..
+rm -r temp

@@ -1,0 +1,12 @@
+#!/bin/bash
+cd
+echo "Let's create a hidden file"
+touch .test.txt
+echo "Let's make sure that we can't see it:"
+ls
+echo "Let's see now what hidden files are in por home directory:"
+ls -a
+echo "Let's watch, will command 'find' find hidden text files or not:"
+find -name ".*" 2>/dev/null
+echo "We can see hidden files in this output, so command 'find' can do it"
+rm .test.txt

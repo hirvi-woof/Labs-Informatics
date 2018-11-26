@@ -1,0 +1,26 @@
+#!/bin/bash
+mkdir tmp
+cd tmp
+wget http://factorized.net/crusoe.txt
+touch f1.txt
+touch f2
+touch f3.txt
+echo "Let's find all files *.txt in folder /tmp while being out of folder /tmp"
+cd ..
+find ./tmp -name "*.txt"
+echo "Let's find all strings with 'Friday' in file we downloaded:"
+cd tmp
+grep "Friday" crusoe.txt
+echo "Let's write something in some text file with '>'(deletes everything in file and adds text in it)  and '>>' (adds text in the end of the file)"
+echo "Hello World!" > file.txt
+echo "Hello World!" >> file.txt
+echo "Let's add the list of all files in our directory and"
+ls > list.txt
+cd ..
+echo "let's find all files "*.txt" on our disk and minimize output 'trash'(we can send output of mistakes to 'emptiness' with 2>/dev/null)"
+cd
+cd ..
+echo "just in case: hirvi is my username"
+find -name "*.txt" > hirvi/listofalltextfiles.txt 2>/dev/null
+cd hirvi
+cat listofalltextfiles.txt

@@ -1,0 +1,23 @@
+#! /bin/bash
+echo Part 1, level Novice
+echo "Let's create a directory and fill it in with files by copying and movements"
+mkdir folder
+echo "Hello world" >  bigboom2.txt
+echo "We can watch what we wrote in this file with command 'cat' :"
+cat bigboom2.txt
+cp -r bigboom2.txt folder
+touch bigboom3.txt
+mv bigboom3.txt folder
+cd folder
+echo "Now let's combine two files into the one big file with command 'cat'"
+cat bigboom3.txt bigboom2.txt > bigboooooom.txt
+echo "We can also edit this file in text redactor 'less' : you can write 'less bigboooooom.txt'"
+echo "We will see what we got in this folder:"
+ls
+cd ..
+echo "Let's delete a directory now"
+rm -rf folder
+echo "Now let's go to home directory and see the whole way to this directory:"
+cd
+cd ..
+pwd

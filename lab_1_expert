@@ -1,0 +1,55 @@
+#!/bin/bash
+wget http://factorized.net/crusoe.txt
+echo "<TASK 1>"
+echo "Let's count all the words 'Friday' in text"
+grep -o 'Friday' crusoe.txt | wc -l
+echo "<TASK 2>"
+echo "Let's replace all 'Friday' inputs with 'Saturday' now"
+sed -i s/Friday/Saturday/g crusoe.txt
+echo "We can check how much 'Saturday' inputs we meet in crusoe.txt:"
+grep -o 'Saturday' crusoe.txt | wc -l 
+rm crusoe.txt
+echo "<TASK 3>"
+echo "Now let's count the sum of numbers in first and second columns in file input.txt which consists of:"
+echo "1 2
+2 2
+3 7" > input.txt
+cat input.txt
+echo "That is what we have got:"
+< input.txt awk '{sum+=$1; sum1+=$2} END {print sum FS sum1}' > count.txt
+cat count.txt
+rm input.txt count.txt
+echo "200 
+1 1 1 1
+10 10 10" > input.txt
+touch script
+echo '
+cat input.txt
+let max=0
+let k=1
+let tmp=1
+while [ $tmp -ne 0 ]
+do
+let tmp=$(sed "${k}q;d" input.txt | wc -w)
+if [ $tmp -gt $max ]; then
+let max1=$k
+let max=$tmp
+fi
+let k=$k+1
+done
+echo "That is what we have got:"
+sed "${max1}q;d" input.txt > output.txt
+cat output.txt
+rm input.txt output.txt' > script
+chmod +x script
+echo "Let's output string that consists of the biggest amount of numbers in file input.txt which looks like this:"
+echo "200
+1 1 1 1 
+10 10 10" > input.txt
+./script
+echo "Let's do the same thing with this file:"
+echo "1 300
+2 3
+10" > input.txt
+./script
+rm script

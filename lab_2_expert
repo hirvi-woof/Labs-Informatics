@@ -31,15 +31,17 @@ echo "Let's give rights on shared.txt to hirvi"
 chown -R hirvi:hirvi shared.txt
 echo "Let's do the same with directory"
 mkdir shared1
-chmod u=r shared1
+chmod u=r /home/hirvi/shared1
 ls -la
-sudo chown -R arturpirozhkov:arturpirozhkov shared1
-sudo chmod u=rwx,go-rwx shared1
+sudo chown -R arturpirozhkov:arturpirozhkov /home/hirvi/shared1
+sudo chmod u=rwx,go-rwx /home/hirvi/shared1
+su -l -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." hirvi
+su -l -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." arturpirozhkov
 ls -la
 echo "Let's bring rights in shared1 to hirvi"
-sudo chown -R hirvi:hirvi shared1
-ls -la
+sudo chown -R hirvi:hirvi /home/hirvi/shared1
 echo "Now let's delete arturpirozhkov"
 sudo rm shared.txt
+sudo rm -r shared1
 sudo deluser --remove-all-files arturpirozhkov 2>/dev/null
 echo "So if every user could do this operations, intuders could do everything to our files. It's not safe"

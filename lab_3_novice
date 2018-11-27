@@ -1,0 +1,30 @@
+#!/bin/bash
+echo "Command 'ping' is usefull when you need to know what is the reason af bad connection to the internet. It is the fastest way to find out if there is internet on your PC or not.
+It can also show if some host (remote server) is available or not. It checks how host can react on net requests.
+Ping send some data packets to the host and waits an answer (server will send the packet too) for it.
+We can also even 'muffle' internet connection using command 'ping -f <domain name>' (it makes some kind of flood)
+Let's try to check connection to yandex.ru (and send only 4 data packets):
+"
+ping -c 4 yandex.ru
+echo "
+Command 'traceroute' gives us time of getting data packets from some host.
+It brings more information - we can know on which knot connection got lost.
+Let's try to find out the speed of connection to yandex.ru:
+"
+traceroute yandex.ru
+echo "
+Let's find out ip adress of server of yandex.ru using command 'nslookup':
+"
+nslookup yandex.ru
+echo "
+Or we can do the same thing using command 'dig':
+"
+dig yandex.ru
+echo "
+The difference is only in place of information we need (these commands give us information about what hosts answer us)
+Now we can see that it's ip adresses are:
+5.255.255.60
+77.88.55.60
+77.88.55.66
+5.255.255.55"
+

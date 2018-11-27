@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "<TASK 1>"
+let k=0
+while [ $k -ne $1 ]
+do
+echo "hi there"
+let k=$k+1
+done

@@ -1,0 +1,33 @@
+#!/bin/bash
+echo "<TASK 4>"
+op=$3
+if [ $# = 2 ]; then
+op=$ARITHMETIC_OP
+fi
+add="add"
+sub="sub"
+mul="mul"
+div="div"
+pow="pow"
+if [ $op = $add ]; then
+let sum=$1+$2
+fi
+if [ $op = $sub ]; then
+let sum=$1-$2
+fi
+if [ $op = $mul ]; then
+let sum=$1*$2
+fi
+if [ $op = $div ]; then
+let sum=$1/$2
+fi
+if [ $op = $pow ]; then
+pow=0
+sum=1
+while [ $pow -ne $2 ]
+do
+let sum=$sum*$1
+let pow=$pow+1
+done
+fi
+echo "$sum"

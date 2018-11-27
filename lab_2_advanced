@@ -24,3 +24,5 @@ echo "Let's try to execute it from the other directory again:"
 script.exe
 cd ..
 rm -r temp
+rm script.c
+rm script.exe

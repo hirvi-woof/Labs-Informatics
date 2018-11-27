@@ -1,0 +1,29 @@
+#!/bin/bash
+echo "<TASK 3>"
+add="add"
+sub="sub"
+mul="mul"
+div="div"
+pow="pow"
+if [ $3 = $add ]; then
+let sum=$1+$2
+fi
+if [ $3 = $sub ]; then
+let sum=$1-$2
+fi
+if [ $3 = $mul ]; then
+let sum=$1*$2
+fi
+if [ $3 = $div ]; then
+let sum=$1/$2
+fi
+if [ $3 = $pow ]; then
+pow=0
+sum=1
+while [ $pow -ne $2 ]
+do
+let sum=$sum*$1
+let pow=$pow+1
+done
+fi
+echo "$sum"

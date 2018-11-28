@@ -8,7 +8,7 @@ egrep -n "[[:alpha:]]{16}" crusoe.txt > file1.txt
 echo "Let's find all words which start with 'a' and end with 'c' and write them down to the text file"
 egrep -n "\s[aA][[:alpha:]]*[cC]\b" crusoe.txt > file2.txt
 echo "Let's find all words which start with 'ab' but 3rd letter is not 'o' and write them down to the text file"
-egrep -n "\sab[^o][[:alpha:]]*\b" crusoe.txt > file3.txt
+egrep -n "\s[aA][Bb][^o][[:alpha:]]*\b" crusoe.txt > file3.txt
 echo "<TASK 2>"
 wget http://factorized.net/patterns.txt
 echo "Let's find all strings which consist of numbers and write them down to the text file"

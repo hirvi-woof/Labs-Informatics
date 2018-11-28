@@ -7,36 +7,34 @@ cat shared.txt
 echo "We can see now that everyone can read, write and execute it"
 ls -l shared.txt
 echo "Let's make it readable only to the user. Everyoune else won't have permission to read, write or execute it"
-chmod u=r shared.txt
+sudo chmod 400 shared.txt
 echo "We can see now that only user can read file"
 ls -l shared.txt
 echo "Let's create a new user to give him permission to react with shared.txt."
 sudo useradd arturpirozhkov
 sudo mkdir /home/arturpirozhkov
-sudo chown arturpirozhkov /home/arturpirozhkov
-sudo chgrp arturpirozhkov /home/arturpirozhkov
+sudo chown arturpirozhkov:arturpirozhkov /home/arturpirozhkov
 echo "Write the password you want to arturpirozhkov:"
 sudo passwd arturpirozhkov
 sudo chown -R arturpirozhkov:arturpirozhkov shared.txt
-sudo chmod u=rwx,go-rwx shared.txt
+sudo chmod 700 shared.txt
 echo "Let's try to execute it as the first user:"
-su -l -c "cat shared.txt" hirvi
+su -c "echo 'hi there' >> shared.txt; cat shared.txt" hirvi
 echo "And let's try to execute it as arturpirozhkov"
-su -l -c "echo 'hi there' >> shared.txt" arturpirozhkov
-su -l -c "cat shared.txt" arturpirozhkov
+su -c "echo 'hi there' >> shared.txt; cat shared.txt" arturpirozhkov
 echo "Now we can see that only arturpirozhkov has permission to do something with shared.txt:"
 ls -l shared.txt
 #Just in case: hirvi is my username
 echo "Let's give rights on shared.txt to hirvi"
-chown -R hirvi:hirvi shared.txt
+sudo chown -R hirvi:hirvi shared.txt
 echo "Let's do the same with directory"
 mkdir shared1
-chmod u=r /home/hirvi/shared1
+sudo chmod -R 400 /home/hirvi/shared1
 ls -la
 sudo chown -R arturpirozhkov:arturpirozhkov /home/hirvi/shared1
-sudo chmod u=rwx,go-rwx /home/hirvi/shared1
-su -l -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." hirvi
-su -l -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." arturpirozhkov
+sudo chmod 700 /home/hirvi/shared1
+su -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." hirvi
+su -c "cd /home/hirvi/shared1; touch file; pwd; ls; cd .." arturpirozhkov
 ls -la
 echo "Let's bring rights in shared1 to hirvi"
 sudo chown -R hirvi:hirvi /home/hirvi/shared1

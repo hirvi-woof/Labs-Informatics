@@ -1,21 +1,28 @@
 #!/bin/bash
 echo "<TASK 1>"
 wget http://factorized.net/crusoe.txt
-echo "Let's find all words which end with 'z' and write them down to the text file"
-egrep -n "z\b" crusoe.txt > file.txt
+echo "Let's find all words which start with 'z' and write them down to the text file"
+egrep -n "\bz" crusoe.txt > file.txt
+cat file.txt
 echo "Let's find all words with 16 letters and write them down to the text file"
 egrep -n "[[:alpha:]]{16}" crusoe.txt > file1.txt
+cat file1.txt
 echo "Let's find all words which start with 'a' and end with 'c' and write them down to the text file"
-egrep -n "\s[aA][[:alpha:]]*[cC]\b" crusoe.txt > file2.txt
+egrep -n "\sa[[:alpha:]]*c\b" crusoe.txt > file2.txt
+cat file2.txt
 echo "Let's find all words which start with 'ab' but 3rd letter is not 'o' and write them down to the text file"
-egrep -n "\s[aA][Bb][^o][[:alpha:]]*\b" crusoe.txt > file3.txt
+egrep -n "\sab[^o][[:alpha:]]*\b" crusoe.txt > file3.txt
+cat file3.txt
 echo "<TASK 2>"
 wget http://factorized.net/patterns.txt
 echo "Let's find all strings which consist of numbers and write them down to the text file"
-egrep -n "^[0-9]$" patterns.txt > file4.txt
+egrep -n "^[0-9]+$" patterns.txt > file4.txt
+cat file4.txt
 echo "Let's find all strings which consists of letters and write them down to the text file"
-egrep -n "^[[:alpha:]]$" patterns.txt > file5.txt
+egrep -n "^[[:alpha:]]+$" patterns.txt > file5.txt
+cat file5.txt
 echo "<TASK 3>"
 echo "Let's find all possible valid russian auto numbers and write the down to the text file"
 egrep -n "^[ABEKMHOPCTYX][0-9]{3}[ABEKMNOPCTYX]{2}[0-9]{2,3}$" patterns.txt > file6.txt
+cat file6.txt
 rm crusoe.txt patterns.txt file.txt file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt
